@@ -182,6 +182,18 @@ in
     # }
     #];
 
+    services.nginx = {
+      enable = true;
+      virtualHosts.${fqdn} = {
+        locations."/" = {
+          extraConfig = ''
+            proxy_set_header Host $host;
+          '';
+          proxyPass = "http://127.0.0.1:${toString config.services.deluge.web.port}/";
+        };
+      };
+    };
+
     systemd.services.deluged.serviceConfig.UMask = lib.mkForce "0027";
     systemd.services.deluged.serviceConfig.Group = lib.mkForce "media";
     users.users.deluge = {
