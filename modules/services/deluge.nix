@@ -170,17 +170,17 @@ in
       restartUnits = [ "deluged.service" "delugeweb.service" ];
     };
 
-    shb.nginx.autheliaProtect = [
-      {
-        inherit (cfg) subdomain domain authEndpoint;
-        upstream = "http://127.0.0.1:${toString config.services.deluge.web.port}";
-        autheliaRules = [{
-          domain = fqdn;
-          policy = "two_factor";
-          subject = ["group:deluge_user"];
-        }];
-      }
-    ];
+    #shb.nginx.autheliaProtect = [
+    #  {
+    #    inherit (cfg) subdomain domain authEndpoint;
+    #    upstream = "http://127.0.0.1:${toString config.services.deluge.web.port}";
+    #    autheliaRules = [{
+    #      domain = fqdn;
+    #      policy = "two_factor";
+    #      subject = ["group:deluge_user"];
+    #    }];
+    # }
+    #];
 
     systemd.services.deluged.serviceConfig.UMask = lib.mkForce "0027";
     systemd.services.deluged.serviceConfig.Group = lib.mkForce "media";
