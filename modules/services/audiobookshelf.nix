@@ -128,7 +128,7 @@ in
       {
         id = cfg.oidcClientID;
         description = "Audiobookshelf";
-        secret = cfg.ssoSecretFile;
+        secret.source = cfg.ssoSecretFile;
         public = false;
         authorization_policy = "one_factor";
         redirect_uris = [ 
