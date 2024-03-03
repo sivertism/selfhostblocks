@@ -128,8 +128,8 @@ in
       {
         id = cfg.oidcClientID;
         description = "Audiobookshelf";
-        secretFile = cfg.ssoSecretFile;
-        public = "false";
+        secret = cfg.ssoSecretFile;
+        public = false;
         authorization_policy = "one_factor";
         redirect_uris = [ 
         "https://${cfg.subdomain}.${cfg.domain}/auth/openid/callback" 
