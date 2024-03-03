@@ -47,6 +47,7 @@
         modules/services/nextcloud-server.nix
         modules/services/vaultwarden.nix
         modules/services/audiobookshelf.nix
+        modules/services/grocy.nix
       ];
     in
       {
